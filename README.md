@@ -1,3 +1,24 @@
 ## Bityn
 
 A customizable and lightweight cross-platform media player
+
+### Goals
+* Fast loading
+* Quick access to playlists and most played media
+* File metadata suggestions and editing
+* Exchange of themes
+* CLI support
+* Streaming audio
+* Streaming video
+
+### Setting up
+```
+git clone https://github.com/fdiogo/bityn.git
+cd bityn
+npm install
+npm start
+```
+
+### Contributing
+
+Feel free to suggest any kind of changes but try to follow the [guidelines](CONTRIBUTING.md).
