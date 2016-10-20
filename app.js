@@ -1,4 +1,4 @@
-const {app, BrowserWindow, nativeImage} = require('electron');
+const {app, BrowserWindow, nativeImage, dialog} = require('electron');
 const fs = require('fs');
 const path = require('path');
 const readTrackMetadata = require('musicmetadata');
@@ -19,6 +19,13 @@ app.on('ready', () => {
 
     window.loadURL('file://' + templates + '/window-main.html');
     window.webContents.on('did-finish-load', function() {
+        const selectedFolders = dialog.showOpenDialog(window, {
+            title: 'Music folder',
+            defaultPath: app.getPath('music'),
+            properties: ['openDirectory']
+        });
+        folders.push.apply(folders, selectedFolders);
+
         const sendTracks = tracks => window.webContents.send('directory-loaded', tracks);
         for(folder of folders)
             loadDirectory(folder, acceptedExtensions, sendTracks);
