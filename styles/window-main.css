@@ -1,0 +1,50 @@
+@media (max-width: 300px) {
+    #sidebar {
+        width: 50%;
+    }
+}
+
+@media (min-width: 301px) {
+    #sidebar {
+        width: 20%;
+    }
+}
+
+body {
+    display: flex;
+    padding: 0px;
+    margin: 0px;
+}
+
+#sidebar, #content {
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+}
+
+#sidebar {
+    color:white;
+    background-color: black;
+    overflow-y: scroll;
+    transition: 0.3s width;
+}
+
+#sidebar.collapsed {
+    width: 50px;
+}
+
+#content {
+    background-color: brown;
+    width: 100%;
+}
+
+.track {
+    padding: 5px;
+    margin: 5px;
+}
+
+.track:hover {
+    cursor: pointer;
+    background-color: gray;
+}

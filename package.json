@@ -1,0 +1,21 @@
+{
+  "name": "bityn",
+  "version": "1.0.0",
+  "description": "A customizable and lightweight cross-platform media player",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diogo Ferreira",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "music-tag": "0.0.9",
+    "musicmetadata": "^2.0.4",
+    "mustache": "^2.2.1"
+  },
+  "devDependencies": {
+    "electron": "^1.4.4"
+  }
+}
