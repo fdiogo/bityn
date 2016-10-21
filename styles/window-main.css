@@ -1,36 +1,25 @@
-@media (max-width: 300px) {
-    #sidebar {
-        width: 50%;
-    }
-}
-
-@media (min-width: 301px) {
-    #sidebar {
-        width: 20%;
-    }
-}
-
 body {
     display: flex;
     font-family: sans-serif;
+    font-weight: bold;
     padding: 0px;
     margin: 0px;
+    overflow-x: hidden;
 }
 
-#sidebar, #content {
-    display: inline-block;
+#sidebar, #player {
+    display: flex;
+    flex-direction: column;
     padding: 0px;
     margin: 0px;
     height: 100vh;
 }
 
 #sidebar {
-    display: flex;
-    flex-direction: column;
+    width: 30%;
     color:black;
     background-color: #599bec;
     transition: 0.3s width;
-    height: 100vh;
 }
 
 #sidebar-menu {
@@ -46,29 +35,60 @@ body {
     overflow-y: scroll;
 }
 
-#content {
-    background-color: rgb(208, 208, 208);
+#player {
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(230, 230, 230);
     width: 100%;
 }
 
-.track {
+#player-center {
+    display: flex;
+    flex-direction: row;
+}
+
+#album-art {
+    margin: 0px 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.58);
+    background-color: white;
+}
+
+#player-controls {
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#track-header {
+    color: #7bc72a;
+    font-size: xx-large;
+    text-shadow: 0px 2px 1px rgba(0,0,0,0.7);
+}
+
+#track-title {
+
+}
+
+.sidebar-track {
     display: flex;
     flex-direction: column;
     color:white;
     background-color: rgba(4, 105, 210, 0.59);
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.37);
-    font-weight: bold;
     font-size: smaller;
     padding: 5px;
     margin: 7px 5px;
 }
 
-.track-artist {
+.sidebar-track-artist {
     color: #ffef00;
     font-size: smaller;
 }
 
-.track:hover {
+.sidebar-track:hover {
     transition: 0.1s box-shadow;
     cursor: pointer;
     box-shadow: 0 4px 7px 1px rgba(0,0,0,0.37);

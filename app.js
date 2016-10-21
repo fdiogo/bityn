@@ -1,4 +1,4 @@
-const {app, BrowserWindow, nativeImage, dialog} = require('electron');
+const {app, BrowserWindow, dialog} = require('electron');
 const fs = require('fs');
 const path = require('path');
 const readTrackMetadata = require('musicmetadata');
@@ -7,15 +7,14 @@ const lib = path.join(__dirname, 'lib');
 const images = path.join(__dirname, 'images');
 const templates = path.join(__dirname, 'templates');
 const models = path.join(lib, 'models.js');
-const DEFAULT_IMAGE = path.join(images, 'note.png');
 
 const {Track, Album} = require(models);
 
 app.on('ready', () => {
-    const window = new BrowserWindow();
-    const folders = new Set([app.getPath('music')]);
+    const folders = new Set();
     const acceptedExtensions = /\.mp3$/;
 
+    const window = new BrowserWindow({ title: "Bityn" });
     window.loadURL('file://' + templates + '/window-main.html');
     window.webContents.on('did-finish-load', function() {
         const selectedFolders = dialog.showOpenDialog(window, {
@@ -30,16 +29,6 @@ app.on('ready', () => {
             loadDirectory(folder, acceptedExtensions, sendTracks);
     });
 });
-
-/**
- * @callback directoryCallback
- * @param {Track[]} - The loaded audio files metadata.
- */
-
-/**
- * @callback eachTrackCallback
- * @param {Track} - The loaded track metadata
- */
 
 /**
  * Loads all the acceptable files metadata from a directory.
@@ -68,11 +57,6 @@ function loadDirectory(folderPath, acceptedExtensions, callback, each) {
 };
 
 /**
- * @callback trackMetadataCallback
- * @param {Track} - The track metadata.
- */
-
-/**
  * Loads an audio file metadata.
  * @param {string} filePath                 - The full path to the audio file.
  * @param {trackMetadataCallback} callback  - The function called with the loaded file metadata.
@@ -85,3 +69,18 @@ function loadTrackMetadata(filePath, callback) {
         callback(track);
     });
 }
+
+/**
+ * @callback directoryCallback
+ * @param {Track[]} - The loaded audio files metadata.
+ */
+
+/**
+ * @callback eachTrackCallback
+ * @param {Track} - The loaded track metadata
+ */
+
+ /**
+  * @callback trackMetadataCallback
+  * @param {Track} - The track metadata.
+  */
