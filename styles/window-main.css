@@ -12,6 +12,7 @@
 
 body {
     display: flex;
+    font-family: sans-serif;
     padding: 0px;
     margin: 0px;
 }
@@ -24,27 +25,51 @@ body {
 }
 
 #sidebar {
-    color:white;
-    background-color: black;
-    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    color:black;
+    background-color: #599bec;
     transition: 0.3s width;
+    height: 100vh;
 }
 
-#sidebar.collapsed {
-    width: 50px;
+#sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37)
+}
+
+#sidebar-content {
+    height: 100%;
+    overflow-y: scroll;
 }
 
 #content {
-    background-color: brown;
+    background-color: rgb(208, 208, 208);
     width: 100%;
 }
 
 .track {
+    display: flex;
+    flex-direction: column;
+    color:white;
+    background-color: rgba(4, 105, 210, 0.59);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.37);
+    font-weight: bold;
+    font-size: smaller;
     padding: 5px;
-    margin: 5px;
+    margin: 7px 5px;
+}
+
+.track-artist {
+    color: #ffef00;
+    font-size: smaller;
 }
 
 .track:hover {
+    transition: 0.1s box-shadow;
     cursor: pointer;
-    background-color: gray;
+    box-shadow: 0 4px 7px 1px rgba(0,0,0,0.37);
 }

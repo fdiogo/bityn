@@ -13,8 +13,7 @@ const {Track, Album} = require(models);
 
 app.on('ready', () => {
     const window = new BrowserWindow();
-    // This should support more folders, possibly in a config file
-    const folders = [app.getPath('music')];
+    const folders = new Set([app.getPath('music')]);
     const acceptedExtensions = /\.mp3$/;
 
     window.loadURL('file://' + templates + '/window-main.html');
@@ -24,7 +23,7 @@ app.on('ready', () => {
             defaultPath: app.getPath('music'),
             properties: ['openDirectory']
         });
-        folders.push.apply(folders, selectedFolders);
+        folders.add.apply(folders, selectedFolders);
 
         const sendTracks = tracks => window.webContents.send('directory-loaded', tracks);
         for(folder of folders)
