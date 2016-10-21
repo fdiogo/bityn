@@ -3,6 +3,8 @@
 
 A customizable and lightweight cross-platform media player
 
+![Current state](https://github.com/fdiogo/bityn/blob/master/wiki/bityn.png)
+
 ### Goals
 * Fast loading
 * Quick access to playlists and most played media
