@@ -39,6 +39,14 @@ app.on('ready', () => {
  */
 function loadDirectory(folderPath, acceptedExtensions, callback, each) {
     fs.readdir(folderPath, function(err, filesNames) {
+        for (let filename of filesNames) {
+            let newFolderPath = path.join(folderPath, filename);
+            fs.stat(newFolderPath, function (err, stats) {
+                if(stats.isDirectory())
+                    loadDirectory(newFolderPath, acceptedExtensions, callback, each);
+            });
+        }
+
         if(acceptedExtensions)
             filesNames = filesNames.filter(fileName => acceptedExtensions.test(fileName));
 
