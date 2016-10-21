@@ -1,4 +1,5 @@
 ## Bityn
+[![Build Status](https://travis-ci.org/fdiogo/bityn.svg?branch=master)](https://travis-ci.org/fdiogo/bityn)
 
 A customizable and lightweight cross-platform media player
 
