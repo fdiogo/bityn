@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "electron app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 0 --reporter nyan test/"
   },
   "author": "Diogo Ferreira",
   "license": "ISC",
@@ -16,6 +16,10 @@
     "mustache": "^2.2.1"
   },
   "devDependencies": {
-    "electron": "^1.4.4"
+    "chai": "^3.5.0",
+    "electron": "^1.4.4",
+    "mocha": "^3.1.2",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0"
   }
 }
