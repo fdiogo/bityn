@@ -22,5 +22,22 @@
     "mocha": "^3.1.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fdiogo/bityn.git"
+  },
+  "keywords": [
+    "player",
+    "electron",
+    "audio",
+    "media"
+  ],
+  "bugs": {
+    "url": "https://github.com/fdiogo/bityn/issues"
+  },
+  "homepage": "https://github.com/fdiogo/bityn#readme"
 }

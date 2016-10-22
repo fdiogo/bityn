@@ -58,8 +58,24 @@ body {
     width: 370px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
+}
+
+#player-controls-header {
+    display: flex;
+    flex-direction: column;
+}
+
+#player-controls-buttons {
+    width: 300px;
+    padding: 0px 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7bc72a;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.44);
 }
 
 #track-header {
@@ -90,6 +106,20 @@ body {
 
 .sidebar-track:hover {
     transition: 0.1s box-shadow;
+    cursor: pointer;
+    box-shadow: 0 4px 7px 1px rgba(0,0,0,0.37);
+}
+
+.media-button {
+    width: 37px;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s box-shadow;
+}
+
+.media-button:hover {
     cursor: pointer;
     box-shadow: 0 4px 7px 1px rgba(0,0,0,0.37);
 }

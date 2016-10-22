@@ -1,0 +1,52 @@
+.icon {
+    transition: 0.2s background-image;
+}
+
+.previous {
+    width: 14px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-image: url('../images/previous.png');
+}
+
+.next {
+    width: 14px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-image: url('../images/next.png');
+}
+
+.play {
+    width: 16px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-image: url('../images/play.png');
+}
+
+.pause {
+    width: 10px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-image: url('../images/pause.png');
+}
+
+.mute {
+    width: 22px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-image: url('../images/mute.png');
+}
+
+.volume-up {
+    width: 24px;
+    height: 26px;
+    background-repeat: no-repeat;
+    background-image: url('../images/volume-up.png');
+}
+
+.volume-down {
+    width: 16px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-image: url('../images/volume-down.png');
+}

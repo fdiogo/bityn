@@ -2,6 +2,8 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../styles/window-main.css">
+        <link rel="stylesheet" type="text/css" href="../styles/icons.css">
+        <audio></audio>
     </head>
     <body>
         <div id="sidebar">
@@ -17,8 +19,24 @@
                     <img src="../images/note.png" width="200" height="200"/>
                 </div>
                 <div id="player-controls">
-                    <span id="track-header">Now playing</span>
-                    <span id="track-title"></span>
+                    <div id="player-controls-header">
+                        <span id="track-header">Now playing</span>
+                        <span id="track-title"></span>
+                    </div>
+                    <div id="player-controls-buttons">
+                        <div id="previous" class="media-button">
+                            <span class="icon previous"></span>
+                        </div>
+                        <div id="play-pause" class="media-button">
+                            <span class="icon play"></span>
+                        </div>
+                        <div id="next" class="media-button">
+                            <span class="icon next"></span>
+                        </div>
+                        <div id="volume" class="media-button">
+                            <span class="icon volume-up"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
