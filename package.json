@@ -5,20 +5,25 @@
   "main": "app.js",
   "scripts": {
     "start": "electron app.js",
-    "test": "mocha --timeout 0 --reporter nyan test/"
+    "test": "mocha --timeout 0 --reporter nyan test/",
+    "package:linux": "electron-packager . --platform linux",
+    "package:windows": "electron-packager . --platform win32",
+    "package:osx": "electron-packager . --platform darwin"
   },
   "author": "Diogo Ferreira",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.4.6",
+    "dustjs-linkedin": "^2.7.4",
     "jquery": "^3.1.1",
     "music-tag": "0.0.9",
-    "musicmetadata": "^2.0.4",
-    "mustache": "^2.2.1"
+    "musicmetadata": "^2.0.4"
   },
   "devDependencies": {
     "audio-player": "^1.1.0",
     "chai": "^3.5.0",
     "electron": "^1.4.4",
+    "electron-packager": "^8.1.0",
     "mocha": "^3.1.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0"

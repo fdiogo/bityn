@@ -102,11 +102,15 @@ body {
 #player-controls-buttons {
     width: 100%;
     padding: 0px 1px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
     background-color: #7bc72a;
+}
+
+#previous, #next, #play-pause {
+    float: left;
+}
+
+#volume {
+    float: right;
 }
 
 .sidebar-track {
