@@ -16,7 +16,6 @@ app.on('ready', () => {
     const acceptedExtensions = /\.mp3$/;
 
     const window = new BrowserWindow({ title: "Bityn" });
-    /** Temporarily removed the unused Electron menu bar */
     window.setMenu(null);
     window.loadURL('file://' + templates + '/window-main.html');
     window.webContents.on('did-finish-load', function() {
