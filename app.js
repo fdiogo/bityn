@@ -30,12 +30,13 @@ app.on('ready', () => {
 
         console.log(`Searching folders: ${Array.from(folders)}`);
 
+        const loadAndSend = file => loadTrackMetadata(file)
+                                        .then(track => window.webContents.send('track-loaded', track))
+                                        .catch(error => console.log(error.message));
+
         for(folder of folders) {
             console.log(`Now loading directory: ${folder}`);
-            getAudioFiles(folder, acceptedExtensions)
-                .map(file => loadTrackMetadata(file).catch(error => null))
-                .filter(track => track !== null)
-                .then(tracks => window.webContents.send('directory-loaded', tracks))
+            getAudioFiles(folder, acceptedExtensions, loadAndSend);
         }
     });
 });
@@ -44,25 +45,22 @@ app.on('ready', () => {
  * Gets the paths of all the accepted audio files in a directory recursively.
  * @param {string} directory            - The directory path
  * @param {RegEx} acceptedExtensions    - A regex to test the files
- * @return {Promise<string[]>}          - A promise to the files
+ * @param {Function} each               - A callback for each valid file
  */
-function getAudioFiles(directory, acceptedExtensions) {
-    const audioFiles = [];
-    return fs.readdirAsync(directory)
-                .catch(error => { console.log(error.message); return []; })
-                .then(files => files.map(file => path.join(directory, file)))
-                .map(file => {
-                    return fs.statAsync(file)
-                            .catch(console.log)
-                            .then(stats => {
-                                if(stats.isDirectory())
-                                    return getAudioFiles(file, acceptedExtensions)
-                                            .then(files => audioFiles.push.apply(audioFiles, files));
-                                else if(!acceptedExtensions || acceptedExtensions.test(file))
-                                    audioFiles.push(file);
-                            });
+function getAudioFiles(directory, acceptedExtensions, each) {
+    fs.readdirAsync(directory)
+        .then(files => files.map(file => path.join(directory, file)))
+        .each(file => {
+            fs.statAsync(file)
+                .then(stats => {
+                    if(stats.isDirectory())
+                        getAudioFiles(file, acceptedExtensions, each)
+                    else if(!acceptedExtensions || acceptedExtensions.test(file))
+                        each(file);
                 })
-                .then(() => audioFiles);
+                .catch(error => console.log(`${file}: ${error.message}`));
+        })
+        .catch(error => console.log(error.message));
 }
 
 /**
