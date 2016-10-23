@@ -16,6 +16,7 @@ app.on('ready', () => {
     const acceptedExtensions = /\.mp3$/;
 
     const window = new BrowserWindow({ title: "Bityn" });
+    window.setMenu(null);
     window.loadURL('file://' + templates + '/window-main.html');
     window.webContents.on('did-finish-load', function() {
         const selectedFolders = dialog.showOpenDialog(window, {
@@ -43,7 +44,7 @@ app.on('ready', () => {
  * Gets the paths of all the accepted audio files in a directory recursively.
  * @param {string} directory            - The directory path
  * @param {RegEx} acceptedExtensions    - A regex to test the files
- * @return {Promise<string[]>}          - A promise to the files 
+ * @return {Promise<string[]>}          - A promise to the files
  */
 function getAudioFiles(directory, acceptedExtensions) {
     const audioFiles = [];
