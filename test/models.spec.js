@@ -1,64 +1,49 @@
-'use strict';
+/* eslint-env mocha */
+const {expect} = require('chai');
+const {Album, Track} = require('./../lib/models');
 
-var chai = require('chai');
-var sinon = require('sinon');
-var sinonChai = require('sinon-chai');
-chai.should();
-chai.use(sinonChai);
+describe('album', () => {
+  it('should initialize album', function () {
+    // given
+    let album;
 
-var models = require('./../lib/models');
+    // when
+    album = new Album();
 
-describe('album', function() {
-
-    it('should initialize album', function() {
-        // given
-        var title = 'Hello';
-        var artist = 'World';
-        var year = 1975;
-        var coverArt = 'http://www.image.jpeg';
-        var tracks = ['t1', 't2'];
-
-        // when
-        var album = new models.Album(title, artist, year, coverArt, tracks);
-
-        // then
-        album.title.should.equal(title);
-        album.artist.should.equal(artist);
-        album.year.should.equal(year);
-        album.coverArt.should.equal(coverArt);
-        album.tracks.should.deep.equal(tracks);
-    });
-
+    // then
+    expect(album.title).to.be.null;
+    expect(album.artist).to.be.null;
+    expect(album.year).to.be.null;
+    expect(album.coverArt).to.be.null;
+    expect(album.tracks).to.deep.equal([]);
+  });
 });
 
-describe('track', function() {
+describe('track', function () {
+  it('should initialize track', function () {
+    // given
+    let track;
 
-    it('should initialize track', function() {
-        // given
-        var title = 'Hello';
-        var artist = 'World';
-        var year = 1975;
-        var path = 'C:\\track';
+    // when
+    track = new Track();
 
-        // when
-        var track = new models.Track(title, artist, year, path);
+    // then
+    expect(track.title).to.be.null;
+    expect(track.artist).to.be.null;
+    expect(track.year).to.be.null;
+    expect(track.path).to.be.null;
+  });
 
-        // then
-        track.title.should.equal(title);
-        track.artist.should.equal(artist);
-        track.year.should.equal(year);
-        track.path.should.equal(path);
-    });
+  it('supports toString()', function () {
+    // given
+    const track = new Track();
+    track.title = 'Holiday';
+    track.artist = 'Green Day';
 
-    it('supports toString()', function() {
-        // given
-        var track = new models.Track('Hello', 'World', 1975, 'C:\\track');
-        var expected = 'World - Hello';
+    // when
+    const output = track.toString();
 
-        // when
-        var actual = track.toString();
-
-        // then
-        actual.should.equal(expected);
-    })
+    // then
+    expect(output).to.equal('Green Day - Holiday');
+  });
 });

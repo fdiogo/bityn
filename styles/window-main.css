@@ -115,13 +115,30 @@ body {
 
 .sidebar-track {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     color:white;
     background-color: rgba(4, 105, 210, 0.59);
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.37);
     font-size: smaller;
     padding: 5px;
     margin: 7px 5px;
+}
+
+.sidebar-track-art {
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    background-color: white;
+    margin-right: 5px;
+}
+
+.sidebar-track-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar-track-title {
+
 }
 
 .sidebar-track-artist {

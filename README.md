@@ -1,7 +1,7 @@
 ## Bityn
 [![Build Status](https://travis-ci.org/fdiogo/bityn.svg?branch=master)](https://travis-ci.org/fdiogo/bityn)
 
-A customizable and lightweight cross-platform media player
+A customizable and lightweight cross-platform media player powered by Electron and HTML5 audio.
 
 ![Current state](https://github.com/fdiogo/bityn/blob/master/wiki/bityn.png)
 

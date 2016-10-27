@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "electron app.js",
-    "test": "mocha --timeout 0 --reporter nyan test/",
+    "lint": "eslint app.js lib test",
+    "lint:fix": "eslint --fix app.js lib test",
+    "test": "npm run lint && mocha --timeout 0 --reporter nyan test/",
     "package:linux": "electron-packager . --platform linux",
     "package:windows": "electron-packager . --platform win32",
     "package:osx": "electron-packager . --platform darwin"
@@ -16,17 +18,18 @@
     "bluebird": "^3.4.6",
     "dustjs-linkedin": "^2.7.4",
     "jquery": "^3.1.1",
-    "music-tag": "0.0.9",
     "musicmetadata": "^2.0.4"
   },
   "devDependencies": {
-    "audio-player": "^1.1.0",
     "chai": "^3.5.0",
     "electron": "^1.4.4",
     "electron-packager": "^8.1.0",
-    "mocha": "^3.1.2",
-    "sinon": "^1.17.6",
-    "sinon-chai": "^2.8.0"
+    "eslint": "^3.8.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.3.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "ghooks": "^1.3.2",
+    "mocha": "^3.1.2"
   },
   "directories": {
     "test": "test"
@@ -35,11 +38,19 @@
     "type": "git",
     "url": "git+https://github.com/fdiogo/bityn.git"
   },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run test"
+    }
+  },
   "keywords": [
     "player",
     "electron",
     "audio",
-    "media"
+    "media",
+    "playback",
+    "stream",
+    "HTML5"
   ],
   "bugs": {
     "url": "https://github.com/fdiogo/bityn/issues"
