@@ -12,23 +12,28 @@ const models = path.join(lib, 'models.js');
 
 const {Track} = require(models);
 
+const Configfile = require('electron-config');
+const configFile = new Configfile();
+
 app.on('ready', () => {
-  const folders = new Set([app.getPath('music')]);
   const acceptedExtensions = /\.mp3$/;
 
   const window = new BrowserWindow({ title: 'Bityn' });
   window.loadURL('file://' + templates + '/window-main.html');
   window.webContents.on('did-finish-load', function () {
-    const selectedFolders = dialog.showOpenDialog(window, {
-      title: 'Music folder',
-      defaultPath: app.getPath('music'),
-      properties: ['openDirectory']
-    });
-
-    if (selectedFolders !== undefined) {
+    let folders;
+    if (configFile.has('musicFolders')) {
+      folders = configFile.get('musicFolders');
+    } else {
+      folders = new Set([app.getPath('music')]);
+      let selectedFolders = dialog.showOpenDialog(window, {
+        title: 'Music folder',
+        defaultPath: app.getPath('music'),
+        properties: ['openDirectory']
+      });
       folders.add.apply(folders, selectedFolders);
+      configFile.set('musicFolders', Array.from(folders));
     }
-
     console.log(`Searching folders: ${Array.from(folders)}`);
 
     const loadAndSend = file => loadTrackMetadata(file)
