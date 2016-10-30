@@ -13,7 +13,7 @@ const models = path.join(lib, 'models.js');
 const {Track} = require(models);
 
 const Configfile = require('electron-config');
-const configfile = new Configfile();
+const configFile = new Configfile();
 
 app.on('ready', () => {
   const acceptedExtensions = /\.mp3$/;
@@ -21,20 +21,19 @@ app.on('ready', () => {
   const window = new BrowserWindow({ title: 'Bityn' });
   window.loadURL('file://' + templates + '/window-main.html');
   window.webContents.on('did-finish-load', function () {
-    if (!configfile.has('folder')) {
-      var folders = dialog.showOpenDialog(window, {
-        title: 'Music folder',
-        defaultPath: app.getPath('music'),
-        properties: ['openDirectory']
-      });
-      if (folders.indexOf(app.getPath('music')) === -1) {
-        folders.push(app.getPath('music'));
-      }
-      configfile.set('folder', folders);
+    let folders;
+    if(configFile.has('musicFolders')) {
+      folders = configFile.get('musicFolders');
     } else {
-      folders = configfile.get('folder');
+      folders = new Set([app.getPath('music')]);
+      let selectedFolders = dialog.showOpenDialog(window, {
+               title: 'Music folder',
+               defaultPath: app.getPath('music'),
+               properties: ['openDirectory']
+      });
+      folders.add.apply(folders, selectedFolders);
+      configFile.set('musicFolders', Array.from(folders));
     }
-
     console.log(`Searching folders: ${Array.from(folders)}`);
 
     const loadAndSend = file => loadTrackMetadata(file)
