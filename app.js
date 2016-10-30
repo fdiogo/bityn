@@ -22,14 +22,14 @@ app.on('ready', () => {
   window.loadURL('file://' + templates + '/window-main.html');
   window.webContents.on('did-finish-load', function () {
     let folders;
-    if(configFile.has('musicFolders')) {
+    if (configFile.has('musicFolders')) {
       folders = configFile.get('musicFolders');
     } else {
       folders = new Set([app.getPath('music')]);
       let selectedFolders = dialog.showOpenDialog(window, {
-               title: 'Music folder',
-               defaultPath: app.getPath('music'),
-               properties: ['openDirectory']
+        title: 'Music folder',
+        defaultPath: app.getPath('music'),
+        properties: ['openDirectory']
       });
       folders.add.apply(folders, selectedFolders);
       configFile.set('musicFolders', Array.from(folders));
